@@ -76,7 +76,7 @@ public class HuffProcessor {
 			
 			for(int k = 0; k < ALPH_SIZE +1; k+=1) { // for every index such that freq[index]
 			    if(k>0) {
-				pq.add(new HuffNode(k,ALPH_SIZE+1,null,null)); //index, freq index, null, null
+				pq.add(new HuffNode(k,counts[k],null,null)); //index, freq index, null, null
 			    }
 			}
 
