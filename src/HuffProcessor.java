@@ -75,7 +75,7 @@ public class HuffProcessor {
 			PriorityQueue<HuffNode> pq = new PriorityQueue<>();
 			
 			for(int k = 0; k < counts.length; k+=1) { // for every index such that freq[index]
-			    if(k>0) {
+			    if(counts[k]>0) {
 				pq.add(new HuffNode(k,counts[k],null,null)); //index, freq index, null, null
 			    }
 			}
@@ -131,8 +131,9 @@ public class HuffProcessor {
 				
 			
 			String code = codings[val];
-			System.out.println(out);
-			System.out.println(code);
+			//System.out.println(out); 
+			//System.out.println(code);
+			if (code == null) System.out.println(val);
 			out.writeBits(code.length(), Integer.parseInt(code,2));
 			}
 			String code = codings[PSEUDO_EOF];
