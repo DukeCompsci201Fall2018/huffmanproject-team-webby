@@ -74,7 +74,7 @@ public class HuffProcessor {
 		public HuffNode makeTreeFromCounts( int[] counts) {
 			PriorityQueue<HuffNode> pq = new PriorityQueue<>();
 			
-			for(int k = 0; k < ALPH_SIZE +1; k+=1) { // for every index such that freq[index]
+			for(int k = 0; k < counts[k]; k+=1) { // for every index such that freq[index]
 			    if(k>0) {
 				pq.add(new HuffNode(k,counts[k],null,null)); //index, freq index, null, null
 			    }
@@ -159,7 +159,7 @@ public class HuffProcessor {
 	
 
 		int bits = in.readBits(BITS_PER_INT);
-		if(bits != HUFF_TREE) {
+		if(bits != HUFF_TREE || bits == -1) {
 		throw new HuffException("illegal header starts with "+bits);
 		}
 		
