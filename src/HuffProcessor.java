@@ -110,12 +110,15 @@ public class HuffProcessor {
 		}
 		
 		public void writeHeader(HuffNode root, BitOutputStream out) {
-			
+			if(root == null) {
+				return;
+			}
 			if(root.myLeft != null || root.myRight != null) { // if not a leaf
 				out.writeBits(1, 0); // write a single bit with value 0
 				writeHeader(root.myLeft,out); // recursive calls for left and right trees, internal node bc has children
 				writeHeader(root.myRight,out)
 ;			}
+		
 			else {
 				out.writeBits(1, 1); // write a single bit with value 1
 				out.writeBits(BITS_PER_WORD+1, root.myValue); //nine bits stored in the leaf
@@ -128,6 +131,8 @@ public class HuffProcessor {
 				
 			
 			String code = codings[val];
+			System.out.println(out);
+			System.out.println(code);
 			out.writeBits(code.length(), Integer.parseInt(code,2));
 			}
 			String code = codings[PSEUDO_EOF];
